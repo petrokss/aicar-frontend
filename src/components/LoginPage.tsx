@@ -40,11 +40,10 @@ const LoginPage = () => {
     },
   });
 
-  useClearServerErrorMessage<LoginUserInput>({
+  useClearServerErrorMessage({
     updatedFields,
     clearErrors,
     isServerError: !!errors.serverError,
-    serverErrorFieldName: 'serverError',
   });
 
   const onSubmit = (data: LoginUserInput) => {

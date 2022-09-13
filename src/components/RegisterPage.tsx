@@ -45,14 +45,13 @@ const RegisterPage = () => {
     },
   });
 
-  useClearServerErrorMessage<RegisterUserInput>({
+  useClearServerErrorMessage({
     updatedFields,
     clearErrors,
     isServerError: !!errors.serverError,
-    serverErrorFieldName: 'serverError',
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: RegisterUserInput) => {
     mutate(data);
   };
 
