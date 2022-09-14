@@ -26,12 +26,11 @@ const LoginPage = () => {
     onSuccess: () => {
       navigate('/home');
     },
-    onError: (error: AxiosError) => {
-      let message = '';
-      if ([400, 401, 404].some((status) => status === error?.response?.status)) {
+    onError: (error: AxiosError<{ error: string }>) => {
+      let message = error?.response?.data.error || 'Internal server error';
+      const errorStatus = error?.response?.status;
+      if ([400, 401, 404].some((status) => status === errorStatus)) {
         message = 'The username or password is incorrect';
-      } else {
-        message = 'Internal server error';
       }
       setError('serverError', {
         type: 'server error',

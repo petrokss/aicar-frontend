@@ -7,6 +7,7 @@ export const login = (userInfo: LoginUserInput) =>
 export const registerUser = async (registerUserPayload: RegisterUserInput) => {
   await request<UserResponse>('POST', '/api/register', {
     data: registerUserPayload,
+    withCredentials: true,
   });
   const userCredentials = {
     username: registerUserPayload.email,
