@@ -101,8 +101,9 @@ const RegisterPage = () => {
               label='Email'
               autoComplete='email'
               {...register('email')}
+              error={!!errors.email}
+              helperText={!!errors.email && errors.email.message}
             />
-            {errors.email && <span style={{ color: 'red' }}>{errors.email.message}</span>}
             <TextField
               margin='normal'
               required
@@ -111,8 +112,9 @@ const RegisterPage = () => {
               type='password'
               autoComplete='password'
               {...register('password')}
+              error={!!errors.password}
+              helperText={!!errors.password && errors.password.message}
             />
-            {errors.password && <span style={{ color: 'red' }}>{errors.password.message}</span>}
             {errors.serverError && (
               <span style={{ color: 'red' }}>{errors.serverError.message}</span>
             )}
